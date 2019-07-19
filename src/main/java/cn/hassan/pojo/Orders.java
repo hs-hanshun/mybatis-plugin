@@ -1,8 +1,11 @@
 package cn.hassan.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.io.Serializable;
 import java.util.Date;
 
+//@Alias(value = "orders") //mybatis注册typeAliases 类的别名
 public class Orders  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
