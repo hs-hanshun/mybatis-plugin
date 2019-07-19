@@ -4,7 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 写Sql语句   -->
 <mapper namespace="cn.hassan.dao.OrderMapper">
-	
+
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
 <!-- 	<select id="selectOrdersList" resultType="Orders"> -->
 	<resultMap type="Orders" id="orders">
 		<result column="user_id" property="userId"/>
