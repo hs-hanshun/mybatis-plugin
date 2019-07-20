@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id column="user_id" property="id"/>
 		<result column="username" property="username"/>
 		<!-- 一对多 -->
-		<collection property="ordersList" javaType="orders">
+		<collection property="ordersList" ofType="orders">
 			<id column="id" property="id"/>
 			<result column="number" property="number"/>
 		</collection>
