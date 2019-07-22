@@ -24,11 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	<result column="id" property="id"/>
 	 	<result column="user_id" property="userId"/>
 	 	<result column="number" property="number"/>
-	 	<!-- 一对一 -->
-	 	<association property="user" javaType="User">
-	 		<id column="user_id" property="id"/>
-	 		<result column="username" property="username"/>
-	 	</association>
+	 	<!-- 一对一 column="user_id" 关联关系中的-->
+	 	<association property="user" column="user_id" javaType="User" select="findUser"/>
 	 </resultMap>
 	 <select id="selectOrders" resultMap="order">
 	 	SELECT 
@@ -37,11 +34,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    o.number,
 	 	o.createtime,
 	 	u.username 
-	 	FROM orders o 
-	 	left join user u 
+	 	FROM orders o
+	 	left join user u
 	 	on o.user_id = u.id
 	 </select>
-	 
+
+    <select id="findUser" resultType="user">
+        select * from user where id = #{id}
+	 </select>
+
 	 <!-- 
 	 
 	 	//一对多关联
