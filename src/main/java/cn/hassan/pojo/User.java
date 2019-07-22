@@ -2,6 +2,7 @@ package cn.hassan.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 	/**
@@ -13,6 +14,9 @@ public class User implements Serializable {
 	private String sex;// 性别
 	private Date birthday;// 生日
 	private String address;// 地址
+
+	//查新用户下的所有订单
+	private List<Orders> ordersList;
 
 
 	public Integer getId() {
@@ -45,6 +49,15 @@ public class User implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public List<Orders> getOrdersList() {
+		return ordersList;
+	}
+
+	public void setOrdersList(List<Orders> ordersList) {
+		this.ordersList = ordersList;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", sex=" + sex

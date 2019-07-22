@@ -89,7 +89,31 @@ public class MybatisTest {
 		sqlSession.close();
 	}
 
+	@Test
+	public void associationTest() {
+		// 获取sqlSession
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// 获取OrderMapper
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		// 执行查询
+		List<Orders> list = orderMapper.selectOrders();
+		for (Orders order : list) {
+			System.out.println(order);
+		}
+	}
 
+	@Test
+	public void collectionTest() {
+		// 获取sqlSession
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// 获取OrderMapper
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		// 执行查询
+		List<User> list = orderMapper.selectUserList();
+		for (User order : list) {
+			System.out.println(order);
+		}
+	}
 
 	///////////////////////////////////////////////////////////
 
