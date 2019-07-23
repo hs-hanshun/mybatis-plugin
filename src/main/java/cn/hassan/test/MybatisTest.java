@@ -103,6 +103,17 @@ public class MybatisTest {
 	}
 
 	@Test
+	public void associationTestTwo() {
+		// 获取sqlSession
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// 获取OrderMapper
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		// 执行查询
+		Orders orderAndUser = orderMapper.findOrderAndUser(5);
+		System.out.println(orderAndUser.toString());
+	}
+
+	@Test
 	public void collectionTest() {
 		// 获取sqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();

@@ -12,10 +12,11 @@ public interface OrderMapper {
 	
 	//一对一关联 查询  以订单为中心 关联用户
 	List<Orders> selectOrders();
+
+	Orders findOrderAndUser(Integer orderId);
 	
 	//一对多关联
 	List<User> selectUserList();
 
 	List<User> findUserByTerm(User user);
-	
 }
