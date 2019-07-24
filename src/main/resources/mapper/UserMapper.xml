@@ -8,9 +8,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <!--缓存配置-->
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
 
+    <sql id="table">
+        user
+    </sql>
+
     <!-- 通过ID查询一个用户 -->
     <select id="findUserById" parameterType="Integer" resultType="User">
-        select * from user where id = #{id}
+        select * from <include refid="table"/> where id = #{id}
     </select>
 
     <!-- //根据用户名称模糊查询用户列表
