@@ -50,7 +50,6 @@ public class MybatisTest {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// 获取OrderMapper
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-		// 执行查询
 		User userOrders = userMapper.findUserOrders(1);
 		System.out.println(userOrders.toString());
 	}
