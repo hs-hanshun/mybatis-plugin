@@ -12,6 +12,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         user
     </sql>
 
+    <resultMap id="userOrders" type="user">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <collection property="ordersList" ofType="orders" column="id" select="findOrders"/>
+    </resultMap>
+
+    <select id="findUserOrders" parameterType="integer" resultMap="userOrders">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="findOrders" parameterType="integer" resultType="orders">
+        select * from orders where user_id = #{id}
+    </select>
+
     <!-- 通过ID查询一个用户 -->
     <select id="findUserById" parameterType="Integer" resultType="User">
         select * from <include refid="table"/> where id = #{id}

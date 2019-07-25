@@ -45,6 +45,17 @@ public class MybatisTest {
 	}
 
 	@Test
+	public void collectionTestTwo(){
+		// 获取sqlSession
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// 获取OrderMapper
+		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+		// 执行查询
+		User userOrders = userMapper.findUserOrders(1);
+		System.out.println(userOrders.toString());
+	}
+
+	@Test
 	public void findUserByUsernameMapper() {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserMapper mapper = sqlSession.getMapper(UserMapper.class);
