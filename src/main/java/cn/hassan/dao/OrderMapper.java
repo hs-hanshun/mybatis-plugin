@@ -11,7 +11,7 @@ public interface OrderMapper {
 	List<Orders> selectOrdersList();
 	
 	//一对一关联 查询  以订单为中心 关联用户
-	List<Orders> selectOrders();
+	Orders selectOrders(Integer orderId);
 
 	Orders findOrderAndUser(Integer orderId);
 	

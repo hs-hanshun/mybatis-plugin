@@ -67,6 +67,30 @@ public class MybatisTest {
 	}
 
 	@Test
+	public void associationTest() {
+		// 获取sqlSession
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// 获取OrderMapper
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		// 执行查询
+		Orders orders = orderMapper.selectOrders(5);
+		System.out.println(orders);
+	}
+
+	@Test
+	public void collectionTest() {
+		// 获取sqlSession
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		// 获取OrderMapper
+		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+		// 执行查询
+		List<User> list = orderMapper.selectUserList();
+		for (User order : list) {
+			System.out.println(order);
+		}
+	}
+
+	@Test
 	public void testQueryUserByWhere() {
 		// mybatis和spring整合，整合之后，交给spring管理
 		SqlSession sqlSession = this.sqlSessionFactory.openSession();
@@ -96,32 +120,6 @@ public class MybatisTest {
 		// 执行查询
 		List<Orders> list = orderMapper.selectOrdersList();
 		for (Orders order : list) {
-			System.out.println(order);
-		}
-	}
-
-	@Test
-	public void associationTest() {
-		// 获取sqlSession
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		// 获取OrderMapper
-		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
-		// 执行查询
-		List<Orders> list = orderMapper.selectOrders();
-		for (Orders order : list) {
-			System.out.println(order);
-		}
-	}
-
-	@Test
-	public void collectionTest() {
-		// 获取sqlSession
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		// 获取OrderMapper
-		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
-		// 执行查询
-		List<User> list = orderMapper.selectUserList();
-		for (User order : list) {
 			System.out.println(order);
 		}
 	}

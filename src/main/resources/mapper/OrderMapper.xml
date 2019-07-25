@@ -27,16 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	<!-- 一对一 column="user_id" 关联关系中的-->
 	 	<association property="user" column="user_id" javaType="User" select="findUser"/>
 	 </resultMap>
-	 <select id="selectOrders" resultMap="order">
+	 <select id="selectOrders" parameterType="Integer" resultMap="order">
 	 	SELECT 
 	 	o.id,
 	    o.user_id, 
 	    o.number,
-	 	o.createtime,
-	 	u.username 
+	 	o.createtime
 	 	FROM orders o
-	 	left join user u
-	 	on o.user_id = u.id
+	 	where o.id = #{orderId}
 	 </select>
 
     <select id="findUser" resultType="user">
@@ -48,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="number" property="number"/>
-        <!-- 一对一-->
+        <!-- 一对一 这种方法使用 left join 关联查询的表 column对应查询出来的列名 property对应pojo里的属性-->
         <association property="user" javaType="User">
             <id column="user_id" property="id"/>
             <result column="username" property="username"/>
