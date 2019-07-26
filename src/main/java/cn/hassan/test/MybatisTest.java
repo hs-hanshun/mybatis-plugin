@@ -42,6 +42,9 @@ public class MybatisTest {
 		// 执行查询
 		Orders orderAndUser = orderMapper.findOrderAndUser(5);
 		System.out.println(orderAndUser.toString());
+		Orders order = orderMapper.findOrderAndUser(5);
+		System.out.println(order.toString());
+
 	}
 
 	@Test
