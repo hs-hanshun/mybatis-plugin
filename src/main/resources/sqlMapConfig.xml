@@ -5,7 +5,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
     <!--注意mybatis标签是有顺序的-->
     <!--加载配置信息-->
-	<properties resource="jdbc.properties"/>
+    <properties resource="jdbc.properties">
+        <property name="hello" value="world"/>
+    </properties>
 
     <!--setting 配置信息-->
     <settings>
@@ -37,8 +39,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <!--原始开发-->
         <!--<mapper resource="cn/hassan/mapper/User.xml"/>-->
         <!--mapper动态代理开发,-->
-        <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/OrderMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
 		<!--<package name="com.itheima.mybatis.mapper"/>-->
 	</mappers>
 </configuration>
